@@ -50,10 +50,7 @@ class Blog extends React.Component {
                   </h3>
                   <p>{item.fields.blogDescription}</p>
 
-                  <Link
-                    className="text-light"
-                    to={`../Blog/${item.fields.slug}`}
-                  >
+                  <Link className="text-light" to={`Blog/${item.fields.slug}`}>
                     <button className="btn btn-primary">Read more</button>
                   </Link>
                 </div>
