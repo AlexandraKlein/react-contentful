@@ -49,13 +49,13 @@ class Blog extends React.Component {
                     </Link>
                   </h3>
                   <p>{item.fields.blogDescription}</p>
-                  <button className="btn btn-primary">
-                    <Link
-                      className="text-light"
-                      to={`../Blog/${item.fields.slug}`}
-                    >
-                      Read more
-                    </Link>
+                  <button
+                    onClick={() =>
+                      this.props.history.push(`../Blog/${item.fields.slug}`)
+                    }
+                    className="btn btn-primary"
+                  >
+                    Read more
                   </button>
                 </div>
               ))}

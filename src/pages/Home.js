@@ -2,6 +2,22 @@ import React from "react";
 import client from "./Client";
 import Loader from "../images/black-loader.gif";
 
+const contents = [
+  {
+    type: "homeBanner",
+  },
+  {
+    type: "homeFeatures",
+  },
+  {
+    type: "homeGallery",
+  },
+  {
+    type: "homeFaq",
+    order: "sys.createdAt",
+  },
+];
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -14,41 +30,19 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    client
-      .getEntries({
-        content_type: "homeBanner",
-      })
-      .then((entries) => {
-        this.setState({ homeBanner: entries.items });
-      });
-
-    client
-      .getEntries({
-        content_type: "homeFeatures",
-      })
-      .then((entries) => {
-        this.setState({ homeFeatures: entries.items });
-      });
-
-    client
-      .getEntries({
-        content_type: "homeGallery",
-      })
-      .then((entries) => {
-        this.setState({ homeGallery: entries.items });
-      });
-
-    client
-      .getEntries({
-        content_type: "homeFaq",
-        order: "sys.createdAt",
-      })
-      .then((entries) => {
-        this.setState({ homeFaq: entries.items });
-      });
+    contents.forEach((content) => {
+      client
+        .getEntries({
+          content_type: content.type,
+          order: content.order || undefined,
+        })
+        .then((entries) => {
+          this.setState({ [content.type]: entries.items });
+        });
+    });
   }
+
   render() {
-    console.log(this.state);
     return (
       <div>
         <div id="carousel" className="carousel slide" data-ride="carousel">
@@ -202,7 +196,7 @@ class Home extends React.Component {
                 aria-multiselectable="true"
               >
                 {this.state.homeFaq.map((item, index) => (
-                  <div className="panel panel-default">
+                  <div key={index} className="panel panel-default">
                     <div
                       className="panel-heading"
                       role="tab"

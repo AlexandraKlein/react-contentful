@@ -26,7 +26,7 @@ class About extends React.Component {
 
   getParsedMarkdown(aboutDescription) {
     return {
-      __html: marked(aboutDescription, { sanitize: true }),
+      __html: marked(aboutDescription),
     };
   }
 

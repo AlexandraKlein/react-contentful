@@ -29,7 +29,7 @@ class SingleArticle extends React.Component {
 
   getParsedMarkdown(blogDescription) {
     return {
-      __html: marked(blogDescription, { sanitize: true }),
+      __html: marked(blogDescription),
     };
   }
 
