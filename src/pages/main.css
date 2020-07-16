@@ -122,7 +122,19 @@ a:target ~ a.cssbox_next {
   visibility: visible;
 }
 
-a:target > img.cssbox_thumb + .cssbox_full {
+div.cssbox_thumb {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+}
+
+div.cssbox_thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+a:target > .cssbox_thumb + .cssbox_full {
   visibility: visible;
   opacity: 1;
   pointer-events: initial;

@@ -148,13 +148,13 @@ class Home extends React.Component {
               this.state.homeGallery.map((item, index) => (
                 <div key={index} className="cssbox">
                   <a id={`image${index + 1}`} href={`#image${index + 1}`}>
-                    <img
-                      className="cssbox_thumb"
-                      src={item.fields.galleryImage.fields.file.url}
-                      height="300"
-                      width="320"
-                      alt="gallery"
-                    />
+                    <div className="cssbox_thumb">
+                      <img
+                        src={item.fields.galleryImage.fields.file.url}
+                        alt="gallery"
+                      />
+                    </div>
+
                     <div className="cssbox_full">
                       <img
                         src={item.fields.galleryImage.fields.file.url}
